@@ -19,7 +19,6 @@ namespace OP\UNIT;
  *
  */
 use OP\Env;
-use OP\Time;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
@@ -49,10 +48,43 @@ class Api implements IF_UNIT
 	 */
 	function __construct()
 	{
+		//	...
 		$this->_json['status'] = true;
 		$this->_json['errors'] = null;
 		$this->_json['result'] = null;
-		$this->_json['timestamp'] = Time::Datetime();
+		/*
+		//	Frozen timestamp.
+		$this->_json['timestamp'] = Env::Timestamp();
+		*/
+		//	Real timestamp.
+		$this->_json['timestamp'] = date(_OP_DATE_TIME_);
+
+		//	...
+		$this->Admin('endpoint', $this->Unit('Router')->EndPoint());
+		$this->Admin('get' , $_GET);
+		$this->Admin('post', $_POST);
+	}
+
+	/** Set for admin only value.
+	 *
+	 * @param string $key
+	 */
+	function Admin($key, $val)
+	{
+		//	...
+		if( Env::isAdmin() ){
+			$this->_json['admin'][$key] = $val;
+		};
+	}
+
+	/** Set error message.
+	 *
+	 * @param string $message
+	 */
+	function Error($message)
+	{
+		//	...
+		$this->_json['errors'][] = $message;
 	}
 
 	/** Get value by key.
@@ -80,20 +112,18 @@ class Api implements IF_UNIT
 	function Out()
 	{
 		//	...
-		if( $this->_json['status'] ?? null ){
-			//	...
-			if(!($_GET['html'] ?? null) ){
-				//	...
-				Env::Set('layout',['execute'=>false]);
+		if( $_GET['html'] ?? null ){
+			D($this->_json);
+			return;
+		};
 
-				//	...
-				echo json_encode($this->_json);
-			}else{
-				D($this->_json);
-			};
+		//	...
+		Env::Mime('text/json');
 
-			//	...
-			unset($this->_json);
-		}
+		//	...
+		Env::Set('layout',['execute'=>false]);
+
+		//	...
+		echo json_encode($this->_json);
 	}
 }
