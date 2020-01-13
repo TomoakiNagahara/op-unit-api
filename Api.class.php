@@ -125,6 +125,15 @@ class Api implements IF_UNIT
 		};
 
 		//	...
+		if( Env::isLocalhost() ){
+			//	...
+			if( $sleep = $_REQUEST['sleep'] ?? rand(0, 1) ){
+				sleep($sleep);
+			};
+
+			//	...
+			self::Admin('sleep', $sleep);
+		}
 
 		//	...
 		Env::Set('layout',['execute'=>false]);
