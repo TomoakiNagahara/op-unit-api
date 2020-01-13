@@ -41,28 +41,23 @@ class Api implements IF_UNIT
 	/** Store variable.
 	 *
 	 */
-	private $_json;
+	static private $_json;
 
 	/** Construct.
 	 *
 	 */
 	function __construct()
 	{
-		//	...
-		$this->_json['status'] = true;
-		$this->_json['errors'] = null;
-		$this->_json['result'] = null;
-		/*
-		//	Frozen timestamp.
-		$this->_json['timestamp'] = Env::Timestamp();
-		*/
-		//	Real timestamp.
-		$this->_json['timestamp'] = date(_OP_DATE_TIME_);
+		//	Init static variable.
+		self::$_json['status'] = true;
+		self::$_json['errors'] = null;
+		self::$_json['result'] = null;
+		self::$_json['timestamp'] = date(_OP_DATE_TIME_);
 
-		//	...
-		$this->Admin('endpoint', $this->Unit('Router')->EndPoint());
-		$this->Admin('get' , $_GET);
-		$this->Admin('post', $_POST);
+		//	Init admin info.
+		self::Admin('endpoint', \OP\Unit::Instantiate('Router')->EndPoint());
+		self::Admin('get' , $_GET);
+		self::Admin('post', $_POST);
 
 		//	Switch display mime.
 		if( $_GET['html'] ?? null ){
@@ -76,11 +71,11 @@ class Api implements IF_UNIT
 	 *
 	 * @param string $key
 	 */
-	function Admin($key, $val)
+	static function Admin($key, $val)
 	{
 		//	...
 		if( Env::isAdmin() ){
-			$this->_json['admin'][$key] = $val;
+			self::$_json['admin'][$key] = $val;
 		};
 	}
 
@@ -88,39 +83,39 @@ class Api implements IF_UNIT
 	 *
 	 * @param string $message
 	 */
-	function Error($message)
+	static function Error($message)
 	{
 		//	...
-		$this->_json['errors'][] = $message;
+		self::$_json['errors'][] = $message;
 	}
 
-	/** Get value by key.
+	/** Get result value by key.
 	 *
 	 * @param string $key
 	 */
-	function Get($key)
+	static function Get($key)
 	{
-		return $this->_json['result'][$key] ?? null;
+		return self::$_json['result'][$key] ?? null;
 	}
 
-	/** Set value by key.
+	/** Set result value by key.
 	 *
 	 * @param string $key
 	 * @param mixed  $val
 	 */
-	function Set($key, $val)
+	static function Set($key, $val)
 	{
-		$this->_json['result'][$key] = $val;
+		self::$_json['result'][$key] = $val;
 	}
 
 	/** Output json string.
 	 *
 	 */
-	function Out()
+	static function Out()
 	{
 		//	...
 		if( $_GET['html'] ?? null ){
-			D($this->_json);
+			D(self::$_json);
 			return;
 		};
 
@@ -139,6 +134,6 @@ class Api implements IF_UNIT
 		Env::Set('layout',['execute'=>false]);
 
 		//	...
-		echo json_encode($this->_json);
+		echo json_encode(self::$_json);
 	}
 }
