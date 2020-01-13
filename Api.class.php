@@ -125,7 +125,6 @@ class Api implements IF_UNIT
 		};
 
 		//	...
-		Env::Mime('text/json');
 
 		//	...
 		Env::Set('layout',['execute'=>false]);
