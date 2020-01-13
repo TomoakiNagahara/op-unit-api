@@ -63,6 +63,13 @@ class Api implements IF_UNIT
 		$this->Admin('endpoint', $this->Unit('Router')->EndPoint());
 		$this->Admin('get' , $_GET);
 		$this->Admin('post', $_POST);
+
+		//	Switch display mime.
+		if( $_GET['html'] ?? null ){
+			Env::Mime('text/html');
+		}else{
+			Env::Mime('text/json');
+		};
 	}
 
 	/** Set for admin only value.
