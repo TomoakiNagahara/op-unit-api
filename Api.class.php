@@ -108,6 +108,16 @@ class Api implements IF_UNIT
 		self::$_json['result'][$key] = $val;
 	}
 
+	/** Set result value directly.
+	 *
+	 * @created  2019-08-29
+	 * @param    mixed       $val
+	 */
+	static function Result($val)
+	{
+		self::$_json['result'] = $val;
+	}
+
 	/** Output json string.
 	 *
 	 */
