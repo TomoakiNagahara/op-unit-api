@@ -48,23 +48,7 @@ class Api implements IF_UNIT
 	 */
 	function __construct()
 	{
-		//	Init static variable.
-		self::$_json['status'] = true;
-		self::$_json['errors'] = null;
-		self::$_json['result'] = null;
-		self::$_json['timestamp'] = date(_OP_DATE_TIME_);
-
-		//	Init admin info.
-		self::Admin('endpoint', \OP\Unit::Instantiate('Router')->EndPoint());
-		self::Admin('get' , $_GET);
-		self::Admin('post', $_POST);
-
-		//	Switch display mime.
-		if( $_GET['html'] ?? null ){
-			Env::Mime('text/html');
-		}else{
-			Env::Mime('text/json');
-		};
+		self::_Init();
 	}
 
 	/** Set for admin only value.
