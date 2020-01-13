@@ -79,6 +79,18 @@ class Api implements IF_UNIT
 		};
 	}
 
+	/** Set dump.
+	 *
+	 * @param array $dump
+	 */
+	static function Dump($dump)
+	{
+		//	...
+		if( Env::isAdmin() ){
+			self::$_json['admin']['dump'][] = $dump;
+		};
+	}
+
 	/** Set error message.
 	 *
 	 * @param string $message
