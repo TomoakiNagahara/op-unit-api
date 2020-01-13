@@ -136,4 +136,14 @@ class Api implements IF_UNIT
 		//	...
 		echo json_encode(self::$_json);
 	}
+
+	/** Help
+	 *
+	 */
+	static function Help()
+	{
+		echo '<pre>';
+		echo self::$_json['admin']['help'] ?? null;
+		echo '</pre>';
+	}
 }
