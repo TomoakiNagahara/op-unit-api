@@ -124,7 +124,16 @@ class Api implements IF_UNIT
 			return;
 		};
 
-		//	...
+		//	Return of Notice.
+		if( Env::isAdmin() ){
+			//	...
+			while( $notice = \OP\Notice::Get() ){
+				$this->_json['notice'][] = $notice;
+			}
+		}
+
+		//	Set MIME
+		Env::Mime('text/json');
 
 		//	...
 		Env::Set('layout',['execute'=>false]);
