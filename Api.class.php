@@ -22,6 +22,8 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
+use OP\Notice;
+use OP\Unit;
 
 /** Api
  *
@@ -116,6 +118,14 @@ class Api implements IF_UNIT
 			D($this->_json);
 			return;
 		};
+
+		//	...
+		if( Env::isAdmin() ){
+			//	...
+			while( $notice = \OP\Notice::Get() ){
+				$this->_json['notice'][] = $notice;
+			}
+		}
 
 		//	...
 		Env::Mime('text/json');
