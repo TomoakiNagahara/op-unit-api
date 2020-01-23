@@ -22,8 +22,6 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
-use OP\Notice;
-use OP\Unit;
 
 /** Api
  *
