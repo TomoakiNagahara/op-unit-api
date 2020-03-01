@@ -151,8 +151,8 @@ class Api implements IF_UNIT
 
 		//	...
 		if( Env::isLocalhost() ){
-			//	...
-			if( $sleep = $_REQUEST['sleep'] ?? rand(0, 1) ){
+			//	This is causing a delay on purpose.
+			if( $sleep = (int)($_REQUEST['sleep'] ?? rand(0, 2)) ){
 				sleep($sleep);
 			};
 
