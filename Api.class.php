@@ -22,6 +22,7 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
+use OP\Notice;
 
 /** Api
  *
@@ -162,6 +163,20 @@ class Api implements IF_UNIT
 
 		//	...
 		Env::Set('layout',['execute'=>false]);
+
+		//	...
+		if( Env::isAdmin() and Notice::Has() ){
+			//	...
+			$notices = [];
+
+			//	...
+			while( $notice = Notice::Get() ) {
+				$notices[] = $notice;
+			}
+
+			//	...
+			self::Admin('notice', $notices);
+		}
 
 		//	...
 		echo json_encode(self::$_json);
