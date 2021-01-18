@@ -22,6 +22,7 @@ use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
 use OP\Notice;
+use function OP\UNIT\API\Sleep;
 
 /** Api
  *
@@ -157,13 +158,9 @@ class Api implements IF_UNIT
 
 		//	...
 		if( Env::isLocalhost() ){
-			//	This is causing a delay on purpose.
-			if( $sleep = (int)($_REQUEST['sleep'] ?? rand(0, 2)) ){
-				sleep($sleep);
-			};
-
 			//	...
-			self::Admin('sleep', $sleep);
+			require_once(__DIR__.'/function/Sleep.php');
+			Sleep();
 		}
 
 		//	...
