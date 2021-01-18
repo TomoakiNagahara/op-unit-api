@@ -63,8 +63,8 @@ class Api implements IF_UNIT
 
 		//	Init admin info.
 		self::Admin('endpoint', \OP\Unit::Instantiate('Router')->EndPoint());
-		self::Admin('get' , $_GET);
-		self::Admin('post', $_POST);
+		self::Admin('get' , $_GET  ?? null);
+		self::Admin('post', $_POST ?? null);
 
 		//	Switch display mime.
 		if( $_GET['html'] ?? null ){
