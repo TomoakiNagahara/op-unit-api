@@ -24,6 +24,7 @@ use OP\OP_UNIT;
 use OP\IF_UNIT;
 use OP\Notice;
 use function OP\UNIT\API\Sleep;
+use function OP\UNIT\API\Notice;
 
 /** Api
  *
@@ -164,15 +165,8 @@ class Api implements IF_UNIT
 		//	...
 		if( Env::isAdmin() and Notice::Has() ){
 			//	...
-			$notices = [];
-
-			//	...
-			while( $notice = Notice::Get() ) {
-				$notices[] = $notice;
-			}
-
-			//	...
-			self::Admin('notice', $notices);
+			require_once(__DIR__.'/function/Notice.php');
+			Notice();
 		}
 
 		//	...
