@@ -81,6 +81,7 @@ class Api implements IF_UNIT
 	/** Set for admin only value.
 	 *
 	 * @param string $key
+	 * @pasam mixed  $val
 	 */
 	static function Admin($key, $val)
 	{
@@ -131,7 +132,7 @@ class Api implements IF_UNIT
 		self::$_json['result'][$key] = $val;
 	}
 
-	/** Set result value directly.
+	/** Set result value directly, All over write.
 	 *
 	 * @created  2019-08-29
 	 * @param    mixed       $val
