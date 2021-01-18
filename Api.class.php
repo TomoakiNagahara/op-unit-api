@@ -150,6 +150,9 @@ class Api implements IF_UNIT
 			return;
 		};
 
+		//	Disable layout.
+		Env::Set('layout',['execute'=>false]);
+
 		//	...
 		if( Env::isLocalhost() ){
 			//	This is causing a delay on purpose.
@@ -160,9 +163,6 @@ class Api implements IF_UNIT
 			//	...
 			self::Admin('sleep', $sleep);
 		}
-
-		//	...
-		Env::Set('layout',['execute'=>false]);
 
 		//	...
 		if( Env::isAdmin() and Notice::Has() ){
