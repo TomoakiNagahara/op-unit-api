@@ -117,9 +117,9 @@ class Api implements IF_UNIT
 	 *
 	 * @param string $key
 	 */
-	static function Get($key)
+	static function Get($key=null)
 	{
-		return self::$_json['result'][$key] ?? null;
+		return $key ? (self::$_json['result'][$key] ?? null) : self::$_json;
 	}
 
 	/** Set result value by key.
