@@ -22,9 +22,6 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
-use OP\Notice;
-use function OP\UNIT\API\Sleep;
-use function OP\UNIT\API\Notice;
 
 /** Api
  *
@@ -156,17 +153,10 @@ class Api implements IF_UNIT
 		Env::Set('layout',['execute'=>false]);
 
 		//	...
-		if( Env::isLocalhost() ){
+		if( Env::isAdmin() ){
 			//	...
-			require_once(__DIR__.'/function/Sleep.php');
-			Sleep();
-		}
-
-		//	...
-		if( Env::isAdmin() and Notice::Has() ){
-			//	...
-			require_once(__DIR__.'/function/Notice.php');
-			Notice();
+			include(__DIR__.'/include/sleep.inc.php');
+			include(__DIR__.'/include/notice.inc.php');
 		}
 
 		//	...
