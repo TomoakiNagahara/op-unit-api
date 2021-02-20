@@ -8,18 +8,20 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-/* @var $app OP\UNIT\App */
-/* @var $api OP\UNIT\Api */
-$api = $app->Unit('Api');
+
+/** namespace
+ *
+ */
+namespace OP;
 
 //	...
 $scheme = 'http';
 $domain = $_SERVER['HTTP_HOST'];
-$path   = $app->URL('app:/api/');
+$path   = ConvertURL('app:/api/');
 $url    = "{$scheme}://{$domain}{$path}";
 
 //	...
-$json = $app->Unit('Curl')->Get($url);
+$json = Unit('Curl')->Get($url);
 
 //	...
 D( json_decode($json, true) );
