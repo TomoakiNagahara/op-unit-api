@@ -21,6 +21,7 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
+use OP\Notice;
 
 /** Api
  *
@@ -155,9 +156,12 @@ class Api implements IF_UNIT
 		Env::Set('layout',['execute'=>false]);
 
 		//	...
-		if( Env::isAdmin() ){
-			//	...
+		if( Env::isLocalhost() and Notice::Has() ){
 			include(__DIR__.'/include/sleep.inc.php');
+		}
+
+		//	...
+		if( Env::isAdmin() ){
 			include(__DIR__.'/include/notice.inc.php');
 		}
 
