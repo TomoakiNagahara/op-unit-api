@@ -23,6 +23,9 @@ use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
 use OP\Notice;
+use OP\Config;
+use function OP\Load;
+use function OP\Layout;
 
 /** Api
  *
@@ -145,13 +148,23 @@ class Api implements IF_UNIT
 	static function Out()
 	{
 		//	...
+		Load('Layout');
+
+		//	...
 		if( $_GET['html'] ?? null ){
+			//	...
+			$layout = Config::Get('api')['layout'] ?? 'white';
+			Layout($layout);
+
+			//	...
 			D(self::$_json);
+
+			//	...
 			return;
 		};
 
 		//	Disable layout.
-		Env::Set('layout',['execute'=>false]);
+		Layout(false);
 
 		//	...
 		if( Env::isLocalhost() and Notice::Has() ){
