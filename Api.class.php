@@ -63,7 +63,7 @@ class Api implements IF_UNIT
 		self::$_json['status'] = true;
 		self::$_json['errors'] = null;
 		self::$_json['result'] = null;
-		self::$_json['timestamp'] = Env::Timestamp(true);
+		self::$_json['timestamp'] = date(_OP_DATE_TIME_);
 
 		//	Init admin info.
 		self::Admin('endpoint', \OP\Unit::Instantiate('Router')->EndPoint());
