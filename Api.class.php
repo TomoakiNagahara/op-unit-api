@@ -189,4 +189,49 @@ class Api implements IF_UNIT
 		echo self::$_json['admin']['help'] ?? null;
 		echo '</pre>';
 	}
+
+	/** Get request from hash.
+	 *
+	 *  This method is for debug.
+	 *  The purpose of this feature is reproduce the request across sessions.
+	 *
+	 *  Requested value is saved to apcu.
+	 *  Recovery requested value from given hash value.
+	 *
+	 * @created 2022-01-22
+	 * @return  array
+	 */
+	static function GetRequestFromHash():array
+	{
+		//	...
+		$request = Request();
+
+		//	...
+		if( $hash = $request['_HASH_'] ?? null ){
+			$json = apcu_fetch($hash);
+
+			//	...
+			if( $json ){
+				$request = json_decode($json, true);
+			}else{
+				self::Error("This hash value data has not saved. ($hash)");
+			}
+		}else{
+			//	...
+			$json = json_encode($request);
+
+			//	...
+			$hash = md5(__FILE__.', '.__LINE__.', '.$json);
+			$hash = substr($hash, 0, 8);
+
+			//	Create new data. Not overwrite.
+			apcu_add($hash, $json);
+		}
+
+		//	...
+		self::Set('hash', $hash);
+
+		//	...
+		return $request;
+	}
 }
