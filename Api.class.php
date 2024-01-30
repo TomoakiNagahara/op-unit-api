@@ -21,7 +21,9 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
+/*
 use OP\Notice;
+*/
 use OP\Config;
 use function OP\Load;
 use function OP\Layout;
@@ -167,7 +169,7 @@ class Api implements IF_UNIT
 		Layout(false);
 
 		//	...
-		if( Env::isLocalhost() and Notice::Has() ){
+		if( Env::isLocalhost() /* and Notice::Has() <-- Why? */ ){
 			include(__DIR__.'/include/sleep.inc.php');
 		}
 
