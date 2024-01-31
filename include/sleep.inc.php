@@ -36,7 +36,7 @@ if(!Env::isLocalhost() ){
 $date = Config::Get('api')['sleep']['skipdate'] ?? null;
 
 //	Check config.
-if( $date === Date('Y-m-d', Env::Time()) ){
+if( $date and $date === Date('Y-m-d', Env::Time()) ){
 	$sleep = 0;
 }else
 
