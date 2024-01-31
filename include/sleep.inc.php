@@ -20,6 +20,7 @@ use OP\Env;
 use OP\Config;
 use OP\UNIT\Api;
 
+/*
 //	Not admin.
 if(!Env::isAdmin() ){
 	return;
@@ -29,6 +30,7 @@ if(!Env::isAdmin() ){
 if(!Env::isLocalhost() ){
 	return;
 }
+*/
 
 //	Get config.
 $date = Config::Get('api')['sleep']['skipdate'] ?? null;
