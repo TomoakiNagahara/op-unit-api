@@ -4,10 +4,11 @@ Api::GetRequestFromHash()
   Cache the request values on the server side.
   The stored value can be recalled using the hash key.
   Hash keys can be passed in URL queries.
+  Of course! This feature works only when Env::isAdmin is true.
 
 ## Usage
 
-  Client side.
+###  Client side.
 
 ```
 //  1st time
@@ -24,7 +25,7 @@ $json = Fetch($url);
 var_dump($json['result']); // ['foo'=>'bar']
 ```
 
-  Server side.
+### Server side.
 
 ```php
 <?php
@@ -36,4 +37,10 @@ $request = $api->GetRequestFromHash()
 
 //  Return request values.
 $api->Result($request);
+```
+
+### Config
+
+```php
+OP()->Config('Api')['cache'] = 'none'; // file, apcu, memcache, database
 ```
