@@ -21,6 +21,7 @@ use OP\Env;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
+use OP\IF_API;
 /*
 use OP\Notice;
 */
@@ -36,7 +37,7 @@ use function OP\Layout;
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-class Api implements IF_UNIT
+class Api implements IF_UNIT, IF_API
 {
 	/** trait.
 	 *
