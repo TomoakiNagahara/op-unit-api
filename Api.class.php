@@ -62,9 +62,11 @@ class Api implements IF_UNIT
 		self::$_json['timestamp'] = Env::Timestamp(true);
 
 		//	Init admin info.
+		if( Env::isAdmin() ){
 		self::Admin('endpoint', \OP\Unit::Instantiate('Router')->EndPoint());
 		self::Admin('get' , $_GET  ?? null);
 		self::Admin('post', $_POST ?? null);
+		}
 
 		//	Switch display mime.
 		if( $_GET['html'] ?? null ){
