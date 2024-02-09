@@ -23,10 +23,10 @@ use OP\OP_UNIT;
 use OP\IF_UNIT;
 /*
 use OP\Notice;
-*/
 use OP\Config;
 use function OP\Load;
 use function OP\Layout;
+*/
 
 /** Api
  *
@@ -151,14 +151,18 @@ class Api implements IF_UNIT
 	 */
 	static function Out()
 	{
+		/*
 		//	...
 		Load('Layout');
+		*/
 
 		//	...
 		if( $_GET['html'] ?? null ){
+			/*
 			//	...
 			$layout = Config::Get('api')['layout'] ?? 'flexbox';
 			Layout($layout);
+			*/
 
 			//	...
 			D(self::$_json);
@@ -168,7 +172,7 @@ class Api implements IF_UNIT
 		};
 
 		//	Disable layout.
-		Layout(false);
+		OP()->Layout(false);
 
 		//	...
 		if( Env::isLocalhost() /* and Notice::Has() <-- Why? */ ){
