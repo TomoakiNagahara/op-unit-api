@@ -157,10 +157,11 @@ class Api implements IF_UNIT
 	 * @created 2022-01-22
 	 * @return  array
 	 */
-	static function GetRequestFromHash():array
+	static function GetRequestFromHash() : array
 	{
+		/*
 		//	...
-		$request = Request();
+		$request = Env::Request();
 
 		//	...
 		if( $hash = $request['_HASH_'] ?? null ){
@@ -180,14 +181,18 @@ class Api implements IF_UNIT
 			$hash = md5(__FILE__.', '.__LINE__.', '.$json);
 			$hash = substr($hash, 0, 8);
 
+			//	Return to hash.
+			self::Admin('hash', $hash);
+
 			//	Create new data. Not overwrite.
 			apcu_add($hash, $json);
 		}
 
 		//	...
-		self::Set('hash', $hash);
+		return $request;
+		*/
 
 		//	...
-		return $request;
+		return include(__DIR__.'/include/GetRequestFromHash.inc.php');
 	}
 }
