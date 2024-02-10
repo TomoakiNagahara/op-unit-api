@@ -189,6 +189,19 @@ class Api implements IF_UNIT, IF_API
 		echo json_encode(self::$_json);
 	}
 
+	/** Get request from
+	 *
+	 * @created  2022-02-09
+	 * @return   array
+	 */
+	static function Request() : array
+	{
+		$io = (Env::isAdmin() and OP()->Config('api')['GetRequestFromHash'] ?? null );
+		return $io ?
+			self::GetRequestFromHash():
+			Env::Request();
+	}
+
 	/** Get request from hash.
 	 *
 	 *  This method is for debug.
