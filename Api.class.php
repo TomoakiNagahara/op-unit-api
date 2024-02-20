@@ -118,15 +118,6 @@ class Api implements IF_UNIT, IF_API
 		self::$_json['errors'][] = $message;
 	}
 
-	/** Get result value by key.
-	 *
-	 * @param string $key
-	 */
-	static function Get($key=null)
-	{
-		return $key ? (self::$_json['result'][$key] ?? null) : self::$_json;
-	}
-
 	/** Set result value by key.
 	 *
 	 * @param string $key
@@ -135,6 +126,15 @@ class Api implements IF_UNIT, IF_API
 	static function Set($key, $val)
 	{
 		self::$_json['result'][$key] = $val;
+	}
+
+	/** Get result value by key.
+	 *
+	 * @param string $key
+	 */
+	static function Get($key=null)
+	{
+		return $key ? (self::$_json['result'][$key] ?? null) : self::$_json;
 	}
 
 	/** Set result value directly, All over write.
