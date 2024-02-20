@@ -10,7 +10,6 @@
 
 /** namespace
  *
- * @creation  2019-03-18
  */
 namespace OP\UNIT;
 
@@ -18,6 +17,7 @@ namespace OP\UNIT;
  *
  */
 use OP\Env;
+use OP\OP_CI;
 use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
@@ -31,7 +31,7 @@ use function OP\Layout;
 
 /** Api
  *
- * @creation  2019-03-18
+ * @created   2019-03-18
  * @version   1.0
  * @package   unit-app
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
@@ -42,7 +42,7 @@ class Api implements IF_UNIT, IF_API
 	/** trait.
 	 *
 	 */
-	use OP_CORE, OP_UNIT;
+	use OP_CORE, OP_UNIT, OP_CI;
 
 	/** Store variable.
 	 *
