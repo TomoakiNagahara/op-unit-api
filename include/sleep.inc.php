@@ -16,7 +16,6 @@ namespace OP\UNIT\API;
 /** use
  *
  */
-use OP\Env;
 use OP\Config;
 use OP\UNIT\Api;
 
@@ -36,7 +35,7 @@ if(!Env::isLocalhost() ){
 $date = Config::Get('api')['sleep']['skipdate'] ?? null;
 
 //	Check config.
-if( $date and $date === Date('Y-m-d', Env::Time()) ){
+if( $date and $date === Date('Y-m-d', OP()->Time()) ){
 	$sleep = 0;
 }else
 
