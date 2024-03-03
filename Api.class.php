@@ -153,7 +153,7 @@ class Api implements IF_UNIT
 	 */
 	static function Request() : array
 	{
-		$io = (Env::isAdmin() and OP()->Config('api')['GetRequestFromHash'] ?? null );
+		$io = OP()->Config('api')['GetRequestFromHash'] ?? null;
 		return $io ?
 			self::GetRequestFromHash():
 			Env::Request();
