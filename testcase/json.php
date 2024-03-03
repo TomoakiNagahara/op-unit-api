@@ -13,8 +13,18 @@
  */
 namespace OP;
 
+//	...
+$_GET['html'] = 1;
+
 /* @var $api \OP\UNIT\Api */
 $api = OP()->Unit('Api');
 
 //	...
+$request = $api->Request();
+D($request);
+
+//	...
 $api->Result('OK');
+
+//	...
+$api->Out();
