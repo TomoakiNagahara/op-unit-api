@@ -71,7 +71,7 @@ class Api implements IF_UNIT, IF_API
 		self::$_json['status'] = true;
 		self::$_json['errors'] = null;
 		self::$_json['result'] = null;
-		self::$_json['timestamp'] = date(_OP_DATE_TIME_);
+		self::$_json['timestamp'] = date(_OP_DATE_TIME_, $_SERVER['REQUEST_TIME']);
 
 		//	Init admin info.
 		if( Env::isAdmin() ){
