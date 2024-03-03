@@ -30,8 +30,10 @@ $config = [
 OP::Config('api', $config);
 
 //	Template
-$result =  'Success!';
-$args   = ['ci.phtml',['arg1'=>'Success!']];
+$arg1   = 'foo';
+$arg2   = 'bar';
+$args   = ['ci.phtml',['arg1'=>$arg1, 'arg2'=>$arg2]];
+$result = $arg1 . $arg2;
 $ci->Set('Template', $result, $args);
 
 //	Admin
@@ -54,7 +56,7 @@ $json = [
 	'status' =>  true,
 	'errors' => [null],
 	'result' =>  null,
-	'timestamp' => OP()->Timestamp(),
+	'timestamp' => date(_OP_DATE_TIME_, $_SERVER['REQUEST_TIME']),
 	'admin'  => [
 		'endpoint' => null,
 		'get'   => [],
@@ -70,11 +72,14 @@ $ci->Set('Out', $result, $args);
 
 //	Request
 $result = [];
-if( \OP\UNIT\CI::Dryrun() ){
-	$result['dry-run'] = '1';
-}
-if( $unit = OP()->Request('unit') ){
-	$result['unit'] = $unit;
+foreach( $_SERVER['argv'] as $arg ){
+	//	...
+	if(!strpos($arg, '=') ){
+		continue;
+	}
+	//	...
+	list($key, $var) = explode('=', $arg);
+	$result[$key] = escapeshellcmd($var);
 }
 $args   = '';
 $ci->Set('Request', $result, $args);
