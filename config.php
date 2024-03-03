@@ -18,10 +18,13 @@ declare(strict_types=1);
  */
 namespace OP;
 
+//	...
+$GetRequestFromHash = Env::isAdmin();
+
 /** Return config array.
  *
  * @return    array        $config
  */
 return [
-	'GetRequestFromHash' => 0,
+	'GetRequestFromHash' => $GetRequestFromHash,
 ];
