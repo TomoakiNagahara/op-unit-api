@@ -61,10 +61,6 @@ $json = [
 		'endpoint' => RootPath('app').'index.php',
 		'get'   => [],
 		'post'  => [],
-		'dump'  => [
-			'trace' => [],
-			'value' => null,
-		],
 		'CI'    => true,
 		'sleep' => '0.0000000',
 	],

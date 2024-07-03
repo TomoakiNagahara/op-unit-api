@@ -97,6 +97,10 @@ class Api implements IF_UNIT, IF_API
 	static function Dump($dump)
 	{
 		//	...
+		if( Env::isCI() ){
+			return;
+		}
+		//	...
 		if( Env::isAdmin() ){
 			self::$_json['admin']['dump'][] = $dump;
 		};
