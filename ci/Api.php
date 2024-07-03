@@ -62,11 +62,8 @@ $json = [
 		'get'   => [],
 		'post'  => [],
 		'dump'  => [
-			[
-				'trace' => [],
-				'value' => null,
-			],
-			null,
+			'trace' => [],
+			'value' => null,
 		],
 		'CI'    => true,
 		'sleep' => '0.0000000',
@@ -93,6 +90,30 @@ $ci->Set('Request', $result, $args);
 //	GetRequestFromHash
 $args   = '';
 $ci->Set('GetRequestFromHash', $result, $args);
+
+//	...
+$method = '_Init';
+$result =  null;
+$args   =  null;
+$ci->Set($method, $result, $args);
+
+//	...
+$method = 'Dump';
+$result =  null;
+$args   =  null;
+$ci->Set($method, $result, $args);
+
+//	...
+$method = 'Error';
+$result =  null;
+$args   =  null;
+$ci->Set($method, $result, $args);
+
+//	...
+$method = 'Result';
+$result =  null;
+$args   =  null;
+$ci->Set($method, $result, $args);
 
 //	...
 return $ci->Get();
