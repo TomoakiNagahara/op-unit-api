@@ -185,6 +185,9 @@ class Api implements IF_UNIT, IF_API
 
 		//	...
 		echo json_encode(self::$_json);
+
+		//	201 Created
+		http_response_code(201);
 	}
 
 	/** Get request from
