@@ -29,6 +29,7 @@ $user_id = $api->Get('user_id');
 ### Out
 
  Output Json string.
+ This method is automatically adjust MIME.
 
 ```php
 $api->Out();
@@ -58,12 +59,13 @@ $api = OP()->Unit('Api');
 //  Set value.
 $api->Set('user_id',$user_id);
 
-//  Set error message for developers.
+//  The error will be included in the JSON, perfect for handling in the browser.
 $api->Error('This is test1.');
 
-//  For site admin only notice.
+//  This is the Notice to the administrator. It is not included in the JSON.
 OP()->Notice('This is a notice to admin only.');
 
+// Output the JSON.
 $api->Out();
 ```
 
