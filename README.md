@@ -69,6 +69,13 @@ OP()->Notice('This is a notice to admin only.');
 $api->Out();
 ```
 
+### localhost
+
+ If `OP()->isLocalhost()` is `true`, the following items are enabled.
+
+ * The admin field is added to the JSON and the status of the request is returned, which can help developers with debugging.
+ * Waits for a request. The number of seconds to sleep can be passed in the request. The default is random. This allows you to test for asynchronous communication failures in advance.
+
 ### Display of html table format
 
  Add `html=1` to the URL query.
