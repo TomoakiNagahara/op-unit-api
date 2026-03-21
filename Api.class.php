@@ -164,7 +164,7 @@ class Api implements IF_UNIT, IF_API
 			*/
 
 			//	...
-			D(self::$_json);
+			OP()->Unit()->Dump()->Auto(self::$_json);
 
 			//	...
 			return;
