@@ -1,11 +1,21 @@
 <?php
-/** op-unit-api:/index.php
+/**	op-unit-api:/index.php
  *
  * @created   2019-03-18
- * @version   1.0
+ * @license   Apache-2.0
  * @package   op-unit-api
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
+ * @copyright Tomoaki Nagahara
  */
-//	...
+
+/**	Declare strict type
+ *
+ */
+declare(strict_types=1);
+
+/**	Namespace
+ *
+ */
+namespace OP;
+
+//	Include
 include(__DIR__.'/Api.class.php');
