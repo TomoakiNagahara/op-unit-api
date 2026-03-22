@@ -79,6 +79,7 @@ class Api implements IF_UNIT
 	/** Set for admin only value.
 	 *
 	 * @param string $key
+	 * @pasam mixed  $val
 	 */
 	static function Admin($key, $val)
 	{
