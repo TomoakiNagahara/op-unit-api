@@ -1,24 +1,23 @@
 <?php
-/** op-unit-api:/Api.class.php
+/**	op-unit-api:/Api.class.php
  *
  * @created   2019-03-18
- * @version   1.0
+ * @license   Apache-2.0
  * @package   op-unit-api
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
+ * @copyright Tomoaki Nagahara
  */
 
-/** Declare strict
+/**	Declare strict type
  *
  */
 declare(strict_types=1);
 
-/** namespace
+/**	Namespace
  *
  */
 namespace OP\UNIT;
 
-/** Used class.
+/**	Use
  *
  */
 use OP\Env;
@@ -37,10 +36,6 @@ use function OP\Layout;
 /** Api
  *
  * @created   2019-03-18
- * @version   1.0
- * @package   unit-app
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
  */
 class Api implements IF_UNIT, IF_API
 {
